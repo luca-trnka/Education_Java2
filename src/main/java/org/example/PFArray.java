@@ -5,7 +5,7 @@ import java.util.Random;
 public class PFArray {
     private int[] array;
 
-    public PFArray(int[] array) {
+    public PFArray() {
         this.array = new int[0]; //New object is initialized as empty array
     }
 
