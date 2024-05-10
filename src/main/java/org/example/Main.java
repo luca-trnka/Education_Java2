@@ -99,6 +99,7 @@ public class Main {
             }
         }
     }
+
     private static void selectedArrayMenu(PFArray array) {
         boolean workingWithArray = true;
         while (workingWithArray) {
@@ -109,23 +110,84 @@ public class Main {
                 case 1:
                     array.printArray();
                     break;
-                default:
-                    System.out.println("Invalid option, please try again.");
+                case 2:
+                    int number = readIntFromUser("Enter number to add: ");
+                    array.addNumber(number);
                     break;
-            }
-        }
-    }
+                case 3:
+                    System.out.println(array.findMaxNumber());
+                    break;
+                case 4:
+                    System.out.println(array.findMinNumber());
+                    break;
+                case 5:
+                    int lengthOfArray = array.getArray().length;
+                    if (lengthOfArray > 0) {
+                        while (true) {
+                            int numberToRemove = readIntFromUser("Enter a number to remove: ");
+                            int count = array.findOccurencyOfNumber(array.getArray(), numberToRemove);
+                            boolean onlyFirst = false;
+                            if (count > 1) {
+                                onlyFirst = readYesNoFromUser("Remove only the first occurrence? (yes/no): ");
+                            }
+                            array.removeNumber(numberToRemove, count, onlyFirst);
 
-    private static int readIntFromUser(String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine();
-            try {
-                return Integer.parseInt(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input, please enter a number.");
+                            int newLengthOFArray = array.getArray().length;
+                            if (lengthOfArray > newLengthOFArray) {
+                                System.out.println("Number removed;).");
+                                break;
+                            } else {
+                                System.out.println("Try again;).");
+                            }
+                        }
+                    }
+                         else{
+                            System.out.println("The Array is empty, there is nothing to remove;).");
+                            break;
+                        }
+                        case 6:
+                          //  array.removeAllNumbers();
+                          //  System.out.println("Array cleared.");
+                            break;
+                        case 7:
+                          //  array.regenerateNumbers();
+                          //  System.out.println("Numbers in array regenerated.");
+                            break;
+                        case 8:
+                            workingWithArray = false;
+
+                        default:
+                            System.out.println("Invalid option, please try again.");
+                            break;
+                    }
             }
         }
+
+        private static int readIntFromUser (String prompt){
+            while (true) {
+                System.out.print(prompt);
+                String input = scanner.nextLine();
+                try {
+                    return Integer.parseInt(input);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input, please enter a number.");
+                }
+            }
+        }
+
+        public static boolean readYesNoFromUser (String prompt){
+            while (true) {
+                System.out.print(prompt);
+                String input = scanner.nextLine().trim().toLowerCase();
+                if (input.equals("yes")) {
+                    return true;
+                } else if (input.equals("no")) {
+                    return false;
+                } else {
+                    System.out.println("Invalid input, please enter 'yes' or 'no'.");
+                }
+            }
+        }
+
     }
-}
 

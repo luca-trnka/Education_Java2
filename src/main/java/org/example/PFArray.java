@@ -53,4 +53,72 @@ public class PFArray {
         System.out.println(Arrays.toString(this.array));
     }
 
+    public void addNumber(int number) {
+        int[] newArray = new int[this.array.length + 1];
+        for (int i = 0; i < this.array.length; i++) {
+            newArray[i] = array[i];
+        }
+        newArray[array.length] = number;
+        this.array = newArray;
+        System.out.println("Number: " + number + "added.");
+    }
+
+    public String findMaxNumber() {
+        if (this.array.length > 0) {
+            int maxNumber = this.array[0];
+            for (int i = 0; i < this.array.length; i++) {
+                if (this.array[i] > maxNumber) {
+                    maxNumber = this.array[i];
+                }
+            }
+            return "The largest number is: " + maxNumber + ".";
+        }
+        return "There are no numbers.";
+    }
+
+    public String findMinNumber() {
+        if (this.array.length > 0) {
+            int minNumber = this.array[0];
+            for (int i = 0; i < this.array.length; i++) {
+                if (this.array[i] < minNumber) {
+                    minNumber = this.array[i];
+                }
+            }
+            return "The smallest number is: " + minNumber + ".";
+        } else {
+            return "There are no numbers.";
+        }
+    }
+
+    public void removeNumber(int number, int count, boolean onlyFirst) {
+
+        if(count == 0) {
+            System.out.println("This number is not in array.");
+            return;
+        }
+        int lengthOfNewArray = array.length - (onlyFirst ? 1 : count);
+        int[] newArray = new int[lengthOfNewArray];
+        int newIndex = 0;
+        int alreadyDeleted = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != number || alreadyDeleted >= count) {
+                newArray[newIndex++] = array[i];
+            } else {
+                alreadyDeleted++;
+            }
+        }
+        this.array = newArray;
+    }
+
+    public static int findOccurencyOfNumber(int[] array, int number) {
+        int count = 0;
+        for (int i = 0; i < array.length; i++) { //Looking for amount of the given number in given array
+            if (array[i] == number) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
 }
