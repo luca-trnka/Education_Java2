@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class PFArray {
@@ -48,5 +49,8 @@ public class PFArray {
         return this.array;
     }
 
+    public void printArray() {
+        System.out.println(Arrays.toString(this.array));
+    }
 
 }

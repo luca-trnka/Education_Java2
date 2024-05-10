@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,7 +21,7 @@ public class Main {
                     createNewArray();
                     break;
                 case 2:
-                    //yourArrays();
+                    yourArrays(arrays);
                     break;
                 case 3:
                     //findArrayWithMaxSum();
@@ -75,6 +76,41 @@ public class Main {
 
                 default:
                     System.out.println("Invalid option, please enter 1 or 2.");
+                    break;
+            }
+        }
+    }
+
+    private static void yourArrays(List<PFArray> arrays) {
+
+        while (true) {
+            System.out.println("Choose the array to work with:");
+            for (int i = 0; i < arrays.size(); i++) {
+                System.out.println((i + 1) + ". Array " + Arrays.toString(arrays.get(i).getArray()));
+            }
+            int arrayOption = readIntFromUser("Enter the option" + "(1-" + arrays.size() + "): ");
+            if (arrayOption >= 1 && arrayOption <= arrays.size()) {
+                PFArray selectedArray = arrays.get(arrayOption - 1);
+                selectedArrayMenu(selectedArray);
+                System.out.println("You've decided to work with: " + arrayOption);
+                break;
+            } else {
+                System.out.println("Invalid array index.");
+            }
+        }
+    }
+    private static void selectedArrayMenu(PFArray array) {
+        boolean workingWithArray = true;
+        while (workingWithArray) {
+            System.out.println(Menu.selectedArrayMenuToString());
+            int option = readIntFromUser("Choose an option: ");
+
+            switch (option) {
+                case 1:
+                    array.printArray();
+                    break;
+                default:
+                    System.out.println("Invalid option, please try again.");
                     break;
             }
         }
