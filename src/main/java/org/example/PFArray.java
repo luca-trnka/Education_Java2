@@ -110,7 +110,7 @@ public class PFArray {
         this.array = newArray;
     }
 
-    public static int findOccurencyOfNumber(int[] array, int number) {
+    public int findOccurencyOfNumber(int[] array, int number) {
         int count = 0;
         for (int i = 0; i < array.length; i++) { //Looking for amount of the given number in given array
             if (array[i] == number) {
@@ -120,5 +120,17 @@ public class PFArray {
         return count;
     }
 
+    public void removeAllNumbers(){
+        this.array = new int[0];
+    }
 
-}
+    public void regenerateNumbers() {
+        Random random = new Random();
+        int max_int_size = 200;
+        for (int i = 0; i < this.array.length; i++) {
+            this.array[i] = random.nextInt(max_int_size) - 100;
+            }
+        }
+    }
+
+

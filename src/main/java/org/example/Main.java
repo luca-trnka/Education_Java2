@@ -150,54 +150,57 @@ public class Main {
                                 System.out.println("Try again;).");
                             }
                         }
+                    } else {
+                        System.out.println("The Array is empty, there is nothing to remove;).");
+                        break;
                     }
-                         else{
-                            System.out.println("The Array is empty, there is nothing to remove;).");
-                            break;
-                        }
-                        case 6:
-                          //  array.removeAllNumbers();
-                          //  System.out.println("Array cleared.");
-                            break;
-                        case 7:
-                          //  array.regenerateNumbers();
-                          //  System.out.println("Numbers in array regenerated.");
-                            break;
-                        case 8:
-                            workingWithArray = false;
-
-                        default:
-                            System.out.println("Invalid option, please try again.");
-                            break;
+                case 6:
+                    array.removeAllNumbers();
+                    System.out.println("Array cleared.");
+                    break;
+                case 7:
+                    array.regenerateNumbers();
+                    if (array.getArray().length == 0) {
+                        System.out.println("There is no number to regenerate. Add one at first.");
+                    } else {
+                        System.out.println("Numbers in array regenerated.");
                     }
+                    break;
+                case 8:
+                    workingWithArray = false;
+
+                default:
+                    System.out.println("Invalid option, please try again.");
+                    break;
             }
         }
-
-        private static int readIntFromUser (String prompt){
-            while (true) {
-                System.out.print(prompt);
-                String input = scanner.nextLine();
-                try {
-                    return Integer.parseInt(input);
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid input, please enter a number.");
-                }
-            }
-        }
-
-        public static boolean readYesNoFromUser (String prompt){
-            while (true) {
-                System.out.print(prompt);
-                String input = scanner.nextLine().trim().toLowerCase();
-                if (input.equals("yes")) {
-                    return true;
-                } else if (input.equals("no")) {
-                    return false;
-                } else {
-                    System.out.println("Invalid input, please enter 'yes' or 'no'.");
-                }
-            }
-        }
-
     }
+
+    private static int readIntFromUser(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine();
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input, please enter a number.");
+            }
+        }
+    }
+
+    public static boolean readYesNoFromUser(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim().toLowerCase();
+            if (input.equals("yes")) {
+                return true;
+            } else if (input.equals("no")) {
+                return false;
+            } else {
+                System.out.println("Invalid input, please enter 'yes' or 'no'.");
+            }
+        }
+    }
+
+}
 
