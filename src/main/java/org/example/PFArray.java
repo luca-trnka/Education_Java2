@@ -60,7 +60,7 @@ public class PFArray {
         }
         newArray[array.length] = number;
         this.array = newArray;
-        System.out.println("Number: " + number + "added.");
+        System.out.println("Number " + number + " added.");
     }
 
     public String findMaxNumber() {

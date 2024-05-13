@@ -84,18 +84,28 @@ public class Main {
     private static void yourArrays(List<PFArray> arrays) {
 
         while (true) {
-            System.out.println("Choose the array to work with:");
-            for (int i = 0; i < arrays.size(); i++) {
-                System.out.println((i + 1) + ". Array " + Arrays.toString(arrays.get(i).getArray()));
-            }
-            int arrayOption = readIntFromUser("Enter the option" + "(1-" + arrays.size() + "): ");
-            if (arrayOption >= 1 && arrayOption <= arrays.size()) {
-                PFArray selectedArray = arrays.get(arrayOption - 1);
-                selectedArrayMenu(selectedArray);
-                System.out.println("You've decided to work with: " + arrayOption);
+            if (arrays.size() == 0) {
+                System.out.println("There are no arrays, yet. Create one first!");
                 break;
             } else {
-                System.out.println("Invalid array index.");
+                System.out.println("Choose the array to work with:");
+                for (int i = 0; i < arrays.size(); i++) {
+                    System.out.println((i + 1) + ". Array " + Arrays.toString(arrays.get(i).getArray()));
+                }
+                int arrayOption;
+                if (arrays.size() == 1) {
+                    arrayOption = readIntFromUser("Enter the option" + "(1)" + ": ");
+                } else {
+                    arrayOption = readIntFromUser("Enter the option" + "(1-" + arrays.size() + "): ");
+                }
+                if (arrayOption >= 1 && arrayOption <= arrays.size()) {
+                    PFArray selectedArray = arrays.get(arrayOption - 1);
+                    System.out.println("You've decided to work with: " + arrayOption);
+                    selectedArrayMenu(selectedArray);
+                    break;
+                } else {
+                    System.out.println("Invalid array index.");
+                }
             }
         }
     }
@@ -134,7 +144,7 @@ public class Main {
 
                             int newLengthOFArray = array.getArray().length;
                             if (lengthOfArray > newLengthOFArray) {
-                                System.out.println("Number removed;).");
+                                System.out.println("Number " + numberToRemove + " removed;).");
                                 break;
                             } else {
                                 System.out.println("Try again;).");
