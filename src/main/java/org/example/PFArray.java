@@ -92,7 +92,7 @@ public class PFArray {
 
     public void removeNumber(int number, int count, boolean onlyFirst) {
 
-        if(count == 0) {
+        if (count == 0) {
             System.out.println("This number is not in array.");
             return;
         }
@@ -120,7 +120,7 @@ public class PFArray {
         return count;
     }
 
-    public void removeAllNumbers(){
+    public void removeAllNumbers() {
         this.array = new int[0];
     }
 
@@ -129,8 +129,18 @@ public class PFArray {
         int max_int_size = 200;
         for (int i = 0; i < this.array.length; i++) {
             this.array[i] = random.nextInt(max_int_size) - 100;
-            }
         }
     }
+
+    public int sumOfElements() {
+        int sum = 0;
+        for (int num : this.array) {
+            sum += num;
+        }
+        return sum;
+    }
+
+
+}
 
 

@@ -24,10 +24,10 @@ public class Main {
                     yourArrays(arrays);
                     break;
                 case 3:
-                    //findArrayWithMaxSum();
+                    findArrayWithMaxSum(arrays);
                     break;
                 case 4:
-                    //findArrayWithMinSum();
+                    findArrayWithMinSum(arrays);
                     break;
                 case 5:
                     running = false;
@@ -107,6 +107,72 @@ public class Main {
                     System.out.println("Invalid array index.");
                 }
             }
+        }
+    }
+
+    private static void findArrayWithMaxSum(List<PFArray> arrays) {
+        if (arrays.isEmpty()) {
+            System.out.println("No arrays created.");
+            return;
+        }
+        PFArray maxSumArray = arrays.get(0);
+        int maxSum = maxSumArray.sumOfElements();
+        for (int i = 1; i < arrays.size(); i++) {
+            int sum = arrays.get(i).sumOfElements();
+            if (sum > maxSum) {
+                maxSum = sum;
+                maxSumArray = arrays.get(i);
+            }
+        }
+
+        List<PFArray> sameSums = new ArrayList<>();
+        for (int i = 1; i < arrays.size(); i++) {
+            if (arrays.get(i).sumOfElements() == maxSum) {
+                sameSums.add(arrays.get(i));
+            }
+        }
+
+        if (sameSums.size() > 1) {
+            System.out.print("Arrays with max sum(" + maxSum + ") are: ");
+            for (PFArray pfarray : sameSums) {
+                pfarray.printArray();
+            }
+        } else {
+            System.out.print("Array with max sum(" + maxSum + "): ");
+            maxSumArray.printArray();
+        }
+    }
+
+    private static void findArrayWithMinSum(List<PFArray> arrays) {
+        if (arrays.isEmpty()) {
+            System.out.println("No arrays created.");
+            return;
+        }
+        PFArray minSumArray = arrays.get(0);
+        int minSum = minSumArray.sumOfElements();
+        for (int i = 1; i < arrays.size(); i++) {
+            int sum = arrays.get(i).sumOfElements();
+            if (sum < minSum) {
+                minSum = sum;
+                minSumArray = arrays.get(i);
+            }
+        }
+
+        List<PFArray> sameSums = new ArrayList<>();
+        for (int i = 1; i < arrays.size(); i++) {
+            if (arrays.get(i).sumOfElements() == minSum) {
+                sameSums.add(arrays.get(i));
+            }
+        }
+
+        if (sameSums.size() > 1) {
+            System.out.print("Arrays with min sum(" + minSum + ") are: ");
+            for (PFArray pfarray : sameSums) {
+                pfarray.printArray();
+            }
+        } else {
+            System.out.print("Array with min sum(" + minSum + "): ");
+            minSumArray.printArray();
         }
     }
 
