@@ -46,10 +46,10 @@ public class Main {
         System.out.println(Menu.mainMenuToString());
     }
 
-    private static void createNewArray() {
+    static void createNewArray() {
 
         while (true) {
-            System.out.println(Menu.creationMenuToString());
+            System.out.print(Menu.creationMenuToString());
             int option = readIntFromUser("Choose an option: ");
             PFArray newArray;
             switch (option) {
@@ -81,7 +81,7 @@ public class Main {
         }
     }
 
-    private static void yourArrays(List<PFArray> arrays) {
+    static void yourArrays(List<PFArray> arrays) {
 
         while (true) {
             if (arrays.size() == 0) {
@@ -110,7 +110,7 @@ public class Main {
         }
     }
 
-    private static void findArrayWithMaxSum(List<PFArray> arrays) {
+   static void findArrayWithMaxSum(List<PFArray> arrays) {
         if (arrays.isEmpty()) {
             System.out.println("No arrays created.");
             return;
