@@ -36,15 +36,6 @@ public class PFArray {
         }
     }
 
-    public void arrayPrinting() {
-        if (this.array.length > 0) {
-            for (int i = 0; i < this.array.length; i++) {
-                System.out.print(this.array[i] + " ");
-            }
-        }
-        System.out.println("Array is empty.");
-    }
-
     public int[] getArray() {
         return this.array;
     }
