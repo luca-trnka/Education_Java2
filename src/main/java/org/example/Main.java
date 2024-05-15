@@ -143,7 +143,7 @@ public class Main {
         }
     }
 
-    private static void findArrayWithMinSum(List<PFArray> arrays) {
+   static void findArrayWithMinSum(List<PFArray> arrays) {
         if (arrays.isEmpty()) {
             System.out.println("No arrays created.");
             return;
@@ -176,10 +176,10 @@ public class Main {
         }
     }
 
-    private static void selectedArrayMenu(PFArray array) {
+   static void selectedArrayMenu(PFArray array) {
         boolean workingWithArray = true;
         while (workingWithArray) {
-            System.out.println(Menu.selectedArrayMenuToString());
+            System.out.print(Menu.selectedArrayMenuToString());
             int option = readIntFromUser("Choose an option: ");
 
             switch (option) {
@@ -234,15 +234,14 @@ public class Main {
                     break;
                 case 8:
                     workingWithArray = false;
-
+                    break;
                 default:
                     System.out.println("Invalid option, please try again.");
                     break;
             }
         }
     }
-
-    private static int readIntFromUser(String prompt) {
+    static int readIntFromUser(String prompt) {
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine();
@@ -254,7 +253,7 @@ public class Main {
         }
     }
 
-    public static boolean readYesNoFromUser(String prompt) {
+    static boolean readYesNoFromUser(String prompt) {
         while (true) {
             System.out.print(prompt);
             String input = scanner.nextLine().trim().toLowerCase();

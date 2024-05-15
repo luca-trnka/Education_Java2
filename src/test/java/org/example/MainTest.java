@@ -12,6 +12,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.lenient;
@@ -46,6 +48,7 @@ class MainTest {
 
     @Test
     void testCreateNewArrayOption2() {
+        //Set up input for the method being tested
         String input = "1\n1,2,3\n";
         testIn = new ByteArrayInputStream(input.getBytes());
         System.setIn(testIn);
@@ -57,5 +60,36 @@ class MainTest {
                 "Array created manually.";
         assertEquals(expectedOutput, outContent.toString().trim());
     }
+
+    @Test
+    void testYourArrays() {
+        //Set up input for the method being tested
+        String input = "1\n8\n";
+        testIn = new ByteArrayInputStream(input.getBytes());
+        System.setIn(testIn);
+
+        //Create a sample array for testing
+        PFArray sampleArray = new PFArray();
+        sampleArray.createArrayManually("1, 2, 3");
+
+        //Mock the arrays list in Main class to return the sample array
+        List<PFArray> mockArrays = new ArrayList<>();
+        mockArrays.add(sampleArray);
+
+        Main.yourArrays(mockArrays);
+
+        assertEquals(1, mockArrays.size());
+        assertArrayEquals(sampleArray.getArray(), mockArrays.get(0).getArray());
+
+       /* String expectedOutput = "Choose the array to work with:\r\n" +
+                                "1. Array [1, 2, 3]\r\n" +
+                                "Enter the option(1): " +
+                                "You've decided to work with: 1\r\n" +
+                                Menu.selectedArrayMenuToString() +
+                                "Choose an option: ";
+        assertEquals(expectedOutput, outContent.toString().trim()); */
+    }
+
+
 
 }
