@@ -117,7 +117,7 @@ public class Main {
         }
         PFArray maxSumArray = arrays.get(0);
         int maxSum = maxSumArray.sumOfElements();
-        for (int i = 1; i < arrays.size(); i++) {
+        for (int i = 0; i < arrays.size(); i++) {
             int sum = arrays.get(i).sumOfElements();
             if (sum > maxSum) {
                 maxSum = sum;
@@ -126,7 +126,7 @@ public class Main {
         }
 
         List<PFArray> sameSums = new ArrayList<>();
-        for (int i = 1; i < arrays.size(); i++) {
+        for (int i = 0; i < arrays.size(); i++) {
             if (arrays.get(i).sumOfElements() == maxSum) {
                 sameSums.add(arrays.get(i));
             }
@@ -150,7 +150,7 @@ public class Main {
         }
         PFArray minSumArray = arrays.get(0);
         int minSum = minSumArray.sumOfElements();
-        for (int i = 1; i < arrays.size(); i++) {
+        for (int i = 0; i < arrays.size(); i++) {
             int sum = arrays.get(i).sumOfElements();
             if (sum < minSum) {
                 minSum = sum;
@@ -159,7 +159,7 @@ public class Main {
         }
 
         List<PFArray> sameSums = new ArrayList<>();
-        for (int i = 1; i < arrays.size(); i++) {
+        for (int i = 0; i < arrays.size(); i++) {
             if (arrays.get(i).sumOfElements() == minSum) {
                 sameSums.add(arrays.get(i));
             }
