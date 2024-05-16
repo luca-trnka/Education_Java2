@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class PFArray {
@@ -54,31 +55,30 @@ public class PFArray {
         System.out.println("Number " + number + " added.");
     }
 
-    public String findMaxNumber() {
-        if (this.array.length > 0) {
-            int maxNumber = this.array[0];
-            for (int i = 0; i < this.array.length; i++) {
-                if (this.array[i] > maxNumber) {
-                    maxNumber = this.array[i];
-                }
-            }
-            return "The largest number is: " + maxNumber + ".";
+    public int findMaxNumber() {
+        if (this.array.length == 0) {
+            throw new NoSuchElementException("In empty array, is impossible to find a max number.");
         }
-        return "There are no numbers.";
+        int maxNumber = this.array[0];
+        for (int i = 0; i < this.array.length; i++) {
+            if (this.array[i] > maxNumber) {
+                maxNumber = this.array[i];
+            }
+        }
+        return maxNumber;
     }
 
-    public String findMinNumber() {
-        if (this.array.length > 0) {
-            int minNumber = this.array[0];
-            for (int i = 0; i < this.array.length; i++) {
-                if (this.array[i] < minNumber) {
-                    minNumber = this.array[i];
-                }
-            }
-            return "The smallest number is: " + minNumber + ".";
-        } else {
-            return "There are no numbers.";
+    public int findMinNumber() {
+        if (this.array.length == 0) {
+            throw new NoSuchElementException("In empty array, is impossible to find a min number.");
         }
+        int minNumber = this.array[0];
+        for (int i = 0; i < this.array.length; i++) {
+            if (this.array[i] < minNumber) {
+                minNumber = this.array[i];
+            }
+        }
+        return minNumber;
     }
 
     public void removeNumber(int number, int count, boolean onlyFirst) {

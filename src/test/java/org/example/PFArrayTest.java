@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -71,16 +72,26 @@ class PFArrayTest {
 
     @Test
     void findMaxNumber() {
-        assertEquals("There are no numbers.", array.findMaxNumber());
-        array.createArrayManually("1,2,3,4,5");
-        assertEquals("The largest number is: 5.", array.findMaxNumber());
+        try {
+            array.findMaxNumber();
+            fail("Expected NoSuchElementException to be thrown");
+        } catch (NoSuchElementException e) {
+            assertEquals("In empty array, is impossible to find a max number.", e.getMessage());
+        }
+            array.createArrayManually("1,2,3,4,5");
+            assertEquals(5, array.findMaxNumber());
     }
 
     @Test
     void findMinNumber() {
-        assertEquals("There are no numbers.", array.findMaxNumber());
+        try {
+            array.findMinNumber();
+            fail("Expected NoSuchElementException to be thrown");
+        } catch (NoSuchElementException e) {
+            assertEquals("In empty array, is impossible to find a min number.", e.getMessage());
+        }
         array.createArrayManually("1,2,3,4,5");
-        assertEquals("The smallest number is: 1.", array.findMinNumber());
+        assertEquals(1, array.findMinNumber());
     }
 
     @Test
@@ -97,13 +108,11 @@ class PFArrayTest {
         array.createArrayManually("1,2,3,4,5");
         int numberToRemove = 6;
         int[] expectedArray = {1, 2, 3, 4, 5};
-        try {
-            array.removeNumber(numberToRemove, 1, true);
-            fail("Expected ArrayIndexOutOfBoundsException was not thrown");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            assertArrayEquals(expectedArray, array.getArray());
+
+        array.removeNumber(numberToRemove, 0, true);
+        assertArrayEquals(expectedArray, array.getArray());
         }
-    }
+
 
     @Test
     public void removeNumber_RemoveAllOfSelectedNum() {

@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
@@ -191,10 +188,20 @@ public class Main {
                     array.addNumber(number);
                     break;
                 case 3:
-                    System.out.println(array.findMaxNumber());
+                    try {
+                        int maxNumber = array.findMaxNumber();
+                        System.out.println("Max number is: " + maxNumber);
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                     break;
                 case 4:
-                    System.out.println(array.findMinNumber());
+                    try {
+                        int minNumber = array.findMinNumber();
+                        System.out.println("Min number is: " + minNumber);
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                     break;
                 case 5:
                     int lengthOfArray = array.getArray().length;
