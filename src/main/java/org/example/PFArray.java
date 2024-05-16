@@ -81,8 +81,9 @@ public class PFArray {
         return minNumber;
     }
 
-    public void removeNumber(int number, int count, boolean onlyFirst) {
+    public void removeNumber(int number, boolean onlyFirst) {
 
+        int count = findOccurencyOfNumber(array, number);
         if (count == 0) {
             System.out.println("This number is not in array.");
             return;
@@ -101,7 +102,7 @@ public class PFArray {
         this.array = newArray;
     }
 
-    public int findOccurencyOfNumber(int[] array, int number) {
+    int findOccurencyOfNumber(int[] array, int number) {
         int count = 0;
         for (int i = 0; i < array.length; i++) { //Looking for amount of the given number in given array
             if (array[i] == number) {

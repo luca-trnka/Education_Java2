@@ -213,7 +213,7 @@ public class Main {
                             if (count > 1) {
                                 onlyFirst = readYesNoFromUser("Remove only the first occurrence? (yes/no): ");
                             }
-                            array.removeNumber(numberToRemove, count, onlyFirst);
+                            array.removeNumber(numberToRemove, onlyFirst);
 
                             int newLengthOFArray = array.getArray().length;
                             if (lengthOfArray > newLengthOFArray) {
@@ -221,12 +221,14 @@ public class Main {
                                 break;
                             } else {
                                 System.out.println("Try again;).");
+                                break;
                             }
                         }
                     } else {
                         System.out.println("The Array is empty, there is nothing to remove;).");
                         break;
                     }
+                    break;
                 case 6:
                     array.removeAllNumbers();
                     System.out.println("Array cleared.");

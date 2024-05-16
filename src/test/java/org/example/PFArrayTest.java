@@ -98,7 +98,7 @@ class PFArrayTest {
     void removeNumber() {
         array.createArrayManually("1,2,3,4,5");
         int numberToRemove = 3;
-        array.removeNumber(numberToRemove, 1, true);
+        array.removeNumber(numberToRemove, true);
         int[] expectedArray = {1, 2, 4, 5};
         assertArrayEquals(expectedArray, array.getArray());
     }
@@ -109,7 +109,7 @@ class PFArrayTest {
         int numberToRemove = 6;
         int[] expectedArray = {1, 2, 3, 4, 5};
 
-        array.removeNumber(numberToRemove, 0, true);
+        array.removeNumber(numberToRemove, true);
         assertArrayEquals(expectedArray, array.getArray());
         }
 
@@ -117,7 +117,7 @@ class PFArrayTest {
     @Test
     public void removeNumber_RemoveAllOfSelectedNum() {
         array.createArrayManually("1,2,2,3,4,2,5");
-        array.removeNumber(2, 3, false);
+        array.removeNumber( 2, false);
         int[] expectedArray = {1, 3, 4, 5};
         assertArrayEquals(expectedArray, array.getArray());
     }
